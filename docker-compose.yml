@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  roadpulse:
+    build: .
+    container_name: roadpulse-ai
+    ports:
+      - "8015:8015"
+    environment:
+      - PORT=8015
+      - HOST=0.0.0.0
+      - DBSCAN_EPS_METERS=20.0
+      - SIMULATE_EMAIL_DISPATCH=True
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
